@@ -36,7 +36,7 @@ OBJ = $(SOURCE:.c=.o)
 all : $(NAME)
 
 $(NAME) :  $(OBJ)	
-	@echo "Compiling $(NAME)..."
+	@echo "Compiling \033[42m$(NAME)\033[0m..."
 	@gcc $(CFLAGS) -c $(SOURCE)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)

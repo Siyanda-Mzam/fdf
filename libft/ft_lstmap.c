@@ -3,34 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: simzam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 13:33:20 by qmuntada          #+#    #+#             */
-/*   Updated: 2014/11/08 13:33:24 by qmuntada         ###   ########.fr       */
+/*   Created: 2016/05/13 10:29:43 by simzam            #+#    #+#             */
+/*   Updated: 2016/05/17 00:01:16 by simzam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/* Iterates the list "lst" and applies the function "f" to each link to create
+ * a “fresh” list (using malloc(3)) resulting from the successive applications 
+ * of "f". If the allocation fails, the function returns NULL.
+ */
+
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list		*nlist;
-	t_list		*slist;
-	t_list		*tmp;
+	t_list	*prev_list;
+	t_list	*new_list;
 
-	if (f == NULL && lst == NULL)
+	if (!lst)
 		return (NULL);
-	tmp = f(lst);
-	nlist = ft_lstnew(tmp->content, tmp->content_size);
-	if (nlist == NULL)
+	new_list = ft_lstnew(lst->content, lst->content_size);
+	if (!new_list)
 		return (NULL);
-	slist = nlist;
-	while (lst->next != NULL)
+	new_list = f(lst);
+	prev_list = new_list;
+	while (lst->next)
 	{
-		tmp = f(lst->next);
-		nlist->next = ft_lstnew(tmp->content, tmp->content_size);
+		prev_list->next = f(lst->next);
+		prev_list = prev_list->next;
 		lst = lst->next;
-		nlist = nlist->next;
 	}
-	return (slist);
+	return (new_list);
 }

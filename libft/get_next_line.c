@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                   :+:      :+:    :+:    */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: simzam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/13 16:04:03 by qmuntada          #+#    #+#             */
-/*   Updated: 2016/06/05 11:26:42 by simzam           ###   ########.fr       */
+/*   Created: 2016/05/22 10:01:12 by simzam            #+#    #+#             */
+/*   Updated: 2016/05/22 21:47:01 by simzam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ char	*cpycat(char *s1, char *s2)
 
 	tmp = NULL;
 	if ((s1 && !s2) || (!s1 && s2))
-		return (s1 ? s1 : s2);
+	{
+		if (s1)
+			return (s1);
+		else
+			return (s2);
+	}
 	if (!s1 && !s2)
 		return (NULL);
 	tmp = ft_memalloc(ft_strlen(s1) + ft_strlen(s2));
@@ -55,7 +60,7 @@ char	*cpycat(char *s1, char *s2)
 	return (tmp);
 }
 
-int		get_next_line(int const fd, char **line)
+int					get_next_line(int const fd, char **line)
 {
 	static char				*str;
 	int						res;

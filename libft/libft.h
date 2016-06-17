@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                           :+:      :+:    :+:    */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: simzam <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/03 11:33:54 by qmuntada          #+#    #+#             */
-/*   Updated: 2016/06/05 11:26:04 by simzam           ###   ########.fr       */
+/*   Created: 2016/05/12 10:01:12 by simzam            #+#    #+#             */
+/*   Updated: 2016/05/17 21:47:01 by simzam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 # include <unistd.h>
 # include <math.h>
 
-# define C_NONE		"\033[0m"
-# define C_BOLD		"\033[1m"
-# define C_BLACK	"\033[30m"
-# define C_RED		"\033[31m"
-# define C_GREEN	"\033[32m"
-# define C_BROWN	"\033[33m"
-# define C_BLUE		"\033[34m"
-# define C_MAGENTA	"\033[35m"
-# define C_CYAN		"\033[36m"
-# define C_GRAY		"\033[37m"
-# define BUFF_SIZE	256
+# define C_NONE         "\033[0m"
+# define C_BOLD         "\033[1m"
+# define C_BLACK        "\033[30m"
+# define C_RED          "\033[31m"
+# define C_GREEN        "\033[32m"
+# define C_BROWN        "\033[33m"
+# define C_BLUE         "\033[34m"
+# define C_MAGENTA      "\033[35m"
+# define C_CYAN         "\033[36m"
+# define C_GRAY         "\033[37m"
+# define BUFF_SIZE 256
 
 typedef struct		s_list
 {
@@ -105,20 +105,6 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int					ft_max(int *array, int len);
-void				ft_swap(int *a, int *b);
-int					ft_sqrt(int nb);
-int					ft_power(int nb, int power);
-int					ft_btw(size_t a, size_t b, size_t c);
-int					ft_isblank(int c);
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstpushback(t_list **blst, void const *content,
-					size_t content_size);
-int					ft_lstlen(t_list *blist);
-int					ft_strcf(char *str, char c);
-void				ft_lstclear(t_list **list);
-t_list				*ft_lstnclear(t_list **list, int nb);
-int					get_next_line(int fd, char **line);
 double				ft_clamp(double x, double min, double max);
 double				ft_mix(double x, double y, double a);
 double				ft_smoothstep(double edge1, double edge2, double x);
@@ -136,5 +122,19 @@ t_vec3				vecadd(t_vec3 *a, t_vec3 *b);
 t_vec3				vecprod(t_vec3 *a, t_vec3 *b);
 t_vec3				vecopx(t_vec3 *a, double x);
 double				vecdistance(t_vec3 *a, t_vec3 *b);
+int					ft_max(int *array, int len);
+void				ft_swap(int *a, int *b);
+int					ft_sqrt(int nb);
+int					ft_power(int nb, int power);
+int					ft_btw(size_t a, size_t b, size_t c);
+int					ft_isblank(int c);
+void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstpushback(t_list **blst, void const *content,
+					size_t content_size);
+int					ft_lstlen(t_list *blist);
+int					ft_strcf(char *str, char c);
+void				ft_lstclear(t_list **list);
+t_list				*ft_lstnclear(t_list **list, int nb);
+int					get_next_line(int fd, char **line);
 
 #endif
